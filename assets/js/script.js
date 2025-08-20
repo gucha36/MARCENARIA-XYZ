@@ -28,3 +28,24 @@ function showSlides() {
   setTimeout(showSlides, 3000); // Troca a cada 3 segundos
 }
 showSlides();
+
+function atualizarHorarioStatus() {
+  const horarioSpan = document.getElementById("horario");
+  const statusSpan = document.getElementById("status");
+  const agora = new Date();
+  const hora = agora.getHours();
+  const minutos = agora.getMinutes().toString().padStart(2, "0");
+  const dia = agora.toLocaleDateString();
+  horarioSpan.textContent = `🕒 ${hora}:${minutos} - ${dia}`;
+
+  // Exemplo: aberto das 8h às 18h
+  if (hora >= 8 && hora < 18) {
+    statusSpan.textContent = "🟢 Aberto";
+    statusSpan.style.color = "green";
+  } else {
+    statusSpan.textContent = "🔴 Fechado";
+    statusSpan.style.color = "red";
+  }
+}
+atualizarHorarioStatus();
+setInterval(atualizarHorarioStatus, 60000); // Atualiza a cada minuto

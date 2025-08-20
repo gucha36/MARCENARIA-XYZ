@@ -1,9 +1,14 @@
 /* =========================
    ESTILOS GERAIS
 ========================= */
+* {
+  cursor: default;
+  user-select: none;
+}
 html,
 body {
   height: 100%;
+  min-width: 0;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -11,13 +16,31 @@ body {
   font-family: Arial, sans-serif;
   box-sizing: border-box;
   overflow: auto; /* permite barra de rolagem horizontal */
+  cursor: default;
+  user-select: none;
+  width: 100%;
+  overflow-x: hidden;
 }
 body {
   min-height: 100vh;
-
-  flex-direction: column;
+  padding-top: 12px;
+  cursor: default;
 }
-
+.topbar {
+  width: 100%;
+  color: #fff;
+  padding: 6px 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  font-size: 1rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+.topbar .status {
+  font-weight: bold;
+  margin-left: 12px;
+}
 /* =========================
    HEADER
 ========================= */
@@ -71,23 +94,26 @@ body {
 ========================= */
 /* MENU oculto até o fim da animação */
 .menu {
+  position: fixed;
+
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 32px;
-  border-radius: 8px;
+  border-radius: 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s;
   min-width: 0;
-  margin-top: 0;
+  margin: 0;
   height: 56px;
 }
 
 .menu.mostrar {
   opacity: 1;
   pointer-events: auto;
-  padding-top: 100px;
 }
 
 .menu ul {
@@ -123,8 +149,10 @@ body {
 
 .slideshow-container {
   position: relative;
-  width: 780px;
-  height: 420px;
+  width: 100%; /* ocupa 90% da largura da tela */
+  max-width: 780px; /* limita o máximo para desktop */
+  height: 50vw; /* altura proporcional à largura da tela */
+  max-height: 420px; /* limita o máximo para desktop */
   margin: 40px auto;
   display: flex;
   align-items: center;

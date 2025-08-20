@@ -2,51 +2,72 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minha Página Separada</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <div class="header">
-      <img src="logo.png" id="logo" alt="Logo" />
+    <!-- Barra superior com informações -->
+    <div class="topbar">
+      <span class="localizacao">📍 Rua Exemplo, 123</span>
+      <span class="telefone">📞 (11) 99999-9999</span>
+      <span>
+        <span class="horario" id="horario"></span>
+        <span class="status" id="status"></span>
+      </span>
     </div>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <img src="assets/img/logo.png" id="logo" alt="Logo" />
+    </header>
+
+    <!-- Menu de navegação -->
     <nav class="menu">
       <ul>
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#produtos">Produtos</a></li>
-        <li><a href="#galeria">Galeria</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#inicio">Home</a></li>
+        <li><a href="#sobre">About us</a></li>
+        <li><a href="#produtos">Products</a></li>
+        <li><a href="#galeria">Reviews</a></li>
+        <li><a href="#contato">Contact</a></li>
       </ul>
     </nav>
 
-    <div class="slideshow-container oculto">
-      <img class="slide" src="cozinha.jpeg" alt="Cozinha Personalizada" />
-      <img class="slide" src="banheiro.jpeg" alt="Banheiro Elegante" />
-      <img class="slide" src="sala.jpeg" alt="Sala Aconchegante" />
-    </div>
+    <!-- Slideshow -->
+    <section class="slideshow-container oculto">
+      <img
+        class="slide"
+        src="assets/img/cozinha.jpeg"
+        alt="Cozinha Personalizada"
+      />
+      <img
+        class="slide"
+        src="assets/img/banheiro.jpeg"
+        alt="Banheiro Elegante"
+      />
+      <img class="slide" src="assets/img/sala.jpeg" alt="Sala Aconchegante" />
+    </section>
 
-    <div class="galeria">
+    <!-- Galeria de imagens -->
+    <section class="galeria">
       <figure>
-        <img src="cozinha.jpeg" alt="Imagem 1" />
+        <img src="assets/img/cozinha.jpeg" alt="Imagem 1" />
         <h4>Cozinha Personalizada</h4>
       </figure>
       <figure>
-        <img src="banheiro.jpeg" alt="Imagem 2" />
+        <img src="assets/img/banheiro.jpeg" alt="Imagem 2" />
         <h4>Banheiro Elegante</h4>
       </figure>
       <figure>
-        <img src="sala.jpeg" alt="Imagem 3" />
+        <img src="assets/img/sala.jpeg" alt="Imagem 3" />
         <h4>Sala Aconchegante</h4>
       </figure>
       <figure>
-        <img src="sala.jpeg" alt="Imagem 3" />
+        <img src="assets/img/sala.jpeg" alt="Imagem 3" />
         <h4>Sala Aconchegante</h4>
       </figure>
       <!-- Adicione mais figuras aqui -->
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
