@@ -16,19 +16,6 @@ window.addEventListener("DOMContentLoaded", function () {
 let slideIndex = 0;
 const slides = document.getElementsByClassName("slide");
 
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 3000); // Troca a cada 3 segundos
-}
-showSlides();
-
 function atualizarHorarioStatus() {
   const horarioSpan = document.getElementById("horario");
   const statusSpan = document.getElementById("status");
@@ -49,3 +36,16 @@ function atualizarHorarioStatus() {
 }
 atualizarHorarioStatus();
 setInterval(atualizarHorarioStatus, 60000); // Atualiza a cada minuto
+
+window.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const header = document.querySelector(".header");
+    header.classList.add("animar");
+    setTimeout(function () {
+      document.querySelector(".menu").classList.add("mostrar");
+      document.querySelector(".galeria").classList.add("mostrar");
+      document.querySelector(".banner-home").classList.remove("oculto");
+      document.querySelector(".banner-home").classList.add("mostrar");
+    }, 1400); // 1200ms da animação + 200ms do delay inicial
+  }, 200);
+});
