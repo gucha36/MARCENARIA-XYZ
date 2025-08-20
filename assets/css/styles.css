@@ -27,6 +27,7 @@ body {
   cursor: default;
 }
 .topbar {
+  position: fixed;
   width: 100%;
   color: #fff;
   padding: 6px 24px;
@@ -95,12 +96,13 @@ body {
 /* MENU oculto até o fim da animação */
 .menu {
   position: fixed;
-
-  left: 0;
-  width: 100%;
+  top: 100px;
+  right: 0; /* Alinha o menu à direita */
+  left: auto; /* Remove alinhamento à esquerda */
+  width: auto; /* Deixe o menu só com a largura dos itens */
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Alinha itens à direita */
   align-items: center;
   border-radius: 0;
   opacity: 0;
@@ -109,6 +111,8 @@ body {
   min-width: 0;
   margin: 0;
   height: 56px;
+
+  padding-right: 32px; /* opcional: espaço da borda direita */
 }
 
 .menu.mostrar {
@@ -118,10 +122,11 @@ body {
 
 .menu ul {
   display: flex;
-  justify-content: center; /* centraliza os itens dentro do ul */
+  justify-content: flex-end;
   align-items: center;
   list-style-type: none;
-  height: none;
+  margin: 0;
+  padding: 10;
 }
 
 .menu li {
@@ -137,6 +142,7 @@ body {
   padding: 8px 12px;
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 .menu a:hover,
@@ -148,6 +154,7 @@ body {
 /*slide show*/
 
 .slideshow-container {
+  top: 150px;
   position: relative;
   width: 100%; /* ocupa 90% da largura da tela */
   max-width: 780px; /* limita o máximo para desktop */
@@ -193,16 +200,17 @@ body {
   display: flex;
   gap: 25px;
   justify-content: center;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s ease;
+  margin-top: 120px; /* <-- adicione esta linha ou aumente o valor */
 }
 
 .galeria.mostrar {
   opacity: 1;
   pointer-events: auto;
   padding-top: 50px;
+  margin-top: 120px; /* <-- adicione esta linha ou aumente o valor */
 }
 
 .galeria figure {
