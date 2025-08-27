@@ -24,6 +24,11 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+.header,
+.header.animar {
+  z-index: 1201 !important;
+  position: fixed;
+}
 body {
   min-height: 100vh;
   /* Ajuste o padding-top para a soma da altura da topbar + menu + header animada */
@@ -38,7 +43,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   color: #fff;
   padding: 6px 24px;
   display: flex;
@@ -107,7 +112,7 @@ body {
   top: 26px; /* logo abaixo da topbar (ajuste conforme altura da topbar) */
   right: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1000;
   display: flex;
   justify-content: flex-end;
