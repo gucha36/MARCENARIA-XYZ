@@ -5,6 +5,12 @@
   cursor: default;
   user-select: none;
 }
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 html,
 body {
   height: 100%;
@@ -41,6 +47,7 @@ body {
   font-size: 1rem;
   align-items: center;
   box-sizing: border-box;
+  background: #111; /* fundo preto sólido */
   z-index: 1100;
 }
 .topbar .status {
@@ -59,13 +66,14 @@ body {
   display: flex;
   align-items: center;
   opacity: 1;
-  z-index: 100;
+  z-index: 1200; /* <-- maior que topbar/menu */
   transition: left 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     padding 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   pointer-events: none;
+  z-index: 1201 !important; /* sempre acima do menu/topbar */
 }
 .header.animar {
   left: 0;
@@ -73,6 +81,7 @@ body {
   transform: none;
   padding: 40px 0 0 40px;
   pointer-events: auto;
+  z-index: 1201 !important; /* sempre acima do menu/topbar */
 }
 
 /* =========================
@@ -95,7 +104,7 @@ body {
 ========================= */
 .menu {
   position: fixed;
-  top: 46px; /* logo abaixo da topbar (ajuste conforme altura da topbar) */
+  top: 26px; /* logo abaixo da topbar (ajuste conforme altura da topbar) */
   right: 0;
   left: 0;
   width: 100vw;
@@ -111,6 +120,8 @@ body {
   margin: 0;
   height: 56px;
   padding-right: 32px;
+  background: #111; /* fundo preto sólido igual ao da topbar */
+  z-index: 1100;
 }
 .menu.mostrar {
   opacity: 1;
@@ -302,4 +313,67 @@ body {
   font-size: 1rem;
   color: #222;
   text-align: center;
+}
+/* Responsividade para tablets e celulares */
+@media (max-width: 900px) {
+  .banner-home {
+    aspect-ratio: 16 / 10;
+    max-width: 98vw;
+    margin: 60px auto 0 auto;
+  }
+  .banner-content {
+    padding: 24px 12px;
+    font-size: 1rem;
+    max-width: 98vw;
+  }
+  .sobre {
+    max-width: 98vw;
+    padding: 24px 12px;
+  }
+  .galeria {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .galeria img {
+    width: 120px;
+    height: 80px;
+  }
+  .menu a {
+    font-size: 1.2rem;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner-home {
+    aspect-ratio: 1/1;
+    margin: 32px auto 0 auto;
+  }
+  .banner-content h1 {
+    font-size: 1.3rem;
+  }
+  .banner-content {
+    padding: 12px 4px;
+    font-size: 0.95rem;
+  }
+  .sobre {
+    padding: 12px 4px;
+    font-size: 1rem;
+  }
+  .galeria {
+    flex-direction: column;
+    align-items: center;
+  }
+  .galeria img {
+    width: 90vw;
+    height: auto;
+    max-width: 300px;
+  }
+  .topbar,
+  .menu {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 4px;
+    font-size: 0.95rem;
+  }
 }
