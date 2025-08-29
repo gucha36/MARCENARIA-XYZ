@@ -1,9 +1,74 @@
 /* =========================
+   MODAL GALERIA
+========================= */
+.modal-galeria {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  flex-direction: column;
+  transition: opacity 0.3s;
+}
+.modal-galeria .modal-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.modal-galeria img#modal-img {
+  max-width: 80vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  box-shadow: 0 4px 32px #000a;
+  background: #fff;
+}
+.modal-galeria .modal-seta {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.modal-galeria .modal-seta:hover {
+  background: #222;
+}
+.modal-galeria .modal-fechar {
+  position: absolute;
+  top: 24px;
+  right: 36px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2100;
+}
+.modal-galeria .modal-legenda {
+  color: #fff;
+  margin-top: 18px;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 80vw;
+}
+/* =========================
    ESTILOS GERAIS
 ========================= */
 * {
   cursor: default;
   user-select: none;
+  box-sizing: border-box; /* Garante que todos os elementos usem box-sizing: border-box */
 }
 img,
 video {
@@ -20,21 +85,13 @@ body {
   padding: 0;
   background: linear-gradient(to bottom, #000000, #ffffff);
   font-family: Arial, sans-serif;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  width: 100%;
-}
-.header,
-.header.animar {
-  z-index: 1201 !important;
-  position: fixed;
+  overflow-x: hidden; /* Remove overflow horizontal do body */
 }
 body {
   min-height: 100vh;
-  /* Ajuste o padding-top para a soma da altura da topbar + menu + header animada */
-  padding-top: 146px; /* Exemplo: topbar (40px) + menu (56px) + header (50px) */
+  padding-top: 94px; /* 38px (topbar) + 56px (menu) */
   cursor: default;
-}
+  
 
 /* =========================
    TOPBAR FIXA
@@ -44,16 +101,19 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  height: 38px;
   color: #fff;
-  padding: 6px 24px;
+  padding-inline: 32px;
   display: flex;
   justify-content: space-between;
-  gap: 32px;
-  font-size: 1rem;
   align-items: center;
-  box-sizing: border-box;
-  background: #111; /* fundo preto sólido */
+  background: #111;
   z-index: 1100;
+  border-bottom: 1px solid #222;
+  box-sizing: border-box;
+  font-size: 1rem;
+  gap: 32px;
+  overflow-x: hidden;
 }
 .topbar .status {
   font-weight: bold;
@@ -61,24 +121,26 @@ body {
 }
 
 /* =========================
-   HEADER
+   HEADER (LOGO ANIMADA)
 ========================= */
-.header {
+.header,
+.header.animar {
   position: fixed;
+  z-index: 1201 !important;
+}
+.header {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   opacity: 1;
-  z-index: 1200; /* <-- maior que topbar/menu */
   transition: left 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     padding 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
   pointer-events: none;
-  z-index: 1201 !important; /* sempre acima do menu/topbar */
 }
 .header.animar {
   left: 0;
@@ -86,12 +148,7 @@ body {
   transform: none;
   padding: 40px 0 0 40px;
   pointer-events: auto;
-  z-index: 1201 !important; /* sempre acima do menu/topbar */
 }
-
-/* =========================
-   LOGO
-========================= */
 #logo {
   width: 400px;
   height: auto;
@@ -100,7 +157,7 @@ body {
   transform: scale(1) rotate(0deg);
 }
 .header.animar #logo {
-  width: 150px;
+  width: 50px;
   transform: scale(1) rotate(720deg);
 }
 
@@ -109,24 +166,20 @@ body {
 ========================= */
 .menu {
   position: fixed;
-  top: 26px; /* logo abaixo da topbar (ajuste conforme altura da topbar) */
-  right: 0;
+  top: 38px; /* logo abaixo da topbar */
   left: 0;
   width: 100%;
-  z-index: 1000;
+  height: 56px;
+  background: #111;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  border-radius: 0;
+  justify-content: center;
+  z-index: 1100;
+  border-bottom: 1px solid #222;
+  box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s;
-  min-width: 0;
-  margin: 0;
-  height: 56px;
-  padding-right: 32px;
-  background: #111; /* fundo preto sólido igual ao da topbar */
-  z-index: 1100;
 }
 .menu.mostrar {
   opacity: 1;
@@ -134,28 +187,26 @@ body {
 }
 .menu ul {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  list-style-type: none;
+  gap: 32px;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 .menu li {
-  margin: 0 18px;
+  margin: 0;
 }
 .menu a {
   color: #fff;
   text-decoration: none;
   font-size: 2rem;
-  letter-spacing: 0.5px;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
   font-family: "Roboto", Arial, sans-serif;
 }
 .menu a:hover,
 .menu a:focus {
-  background: #444;
+  background: #222;
   color: #b89b7b;
 }
 
@@ -163,10 +214,10 @@ body {
    BANNER
 ========================= */
 .banner-home {
-  width: 98vw;
-  aspect-ratio: 16 / 6;
+  width: 98%;
   max-width: 1400px;
-  margin: 100px auto 0 auto; /* afasta do topo, centraliza */
+  aspect-ratio: 16 / 6;
+  margin: 100px auto 0 auto;
   background: url("../img/cozinha.png") center center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -220,7 +271,10 @@ body {
   pointer-events: auto !important;
   transition: opacity 0.6s;
 }
-/* ...existing code... */
+
+/* =========================
+   SOBRE
+========================= */
 .sobre {
   max-width: 1350px;
   margin: 60px auto 0 auto;
@@ -231,6 +285,14 @@ body {
   color: #222;
   font-size: 1.15rem;
   line-height: 1.7;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s;
+}
+.sobre.mostrar {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: opacity 0.6s;
 }
 .sobre h1 {
   font-size: 2.2rem;
@@ -252,35 +314,24 @@ body {
 .sobre strong {
   color: #a18462;
 }
-.oculto {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.6s;
-}
-.sobre.mostrar {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  transition: opacity 0.6s;
-}
 
 /* =========================
    GALERIA
 ========================= */
 .galeria {
-  position: relative; /* <-- agora rola normalmente */
+  position: relative;
   display: flex;
   gap: 25px;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s ease;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .galeria.mostrar {
   opacity: 1;
   pointer-events: auto;
-  padding-top: 0;
-  margin-top: 40;
+  margin-top: 80px;
 }
 .galeria figure {
   display: flex;
@@ -319,7 +370,10 @@ body {
   color: #222;
   text-align: center;
 }
-/* Responsividade para tablets e celulares */
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
 @media (max-width: 900px) {
   .banner-home {
     aspect-ratio: 16 / 10;

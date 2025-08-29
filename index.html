@@ -79,23 +79,34 @@
     <!-- Galeria de imagens -->
     <section id="produtos" class="galeria">
       <figure>
-        <img src="assets/img/cozinha.png" alt="Imagem 1" />
+        <img src="assets/img/cozinhas/cozinha.png" alt="Imagem 1" />
         <h4>Cozinha Personalizada</h4>
       </figure>
       <figure>
-        <img src="assets/img/banheiro.jpeg" alt="Imagem 2" />
+        <img src="assets/img/banheiros/banheiro.jpeg" alt="Imagem 2" />
         <h4>Banheiro Elegante</h4>
       </figure>
       <figure>
-        <img src="assets/img/sala.jpeg" alt="Imagem 3" />
+        <img src="assets/img/salas/sala.jpeg" alt="Imagem 3" />
         <h4>Sala Aconchegante</h4>
       </figure>
       <figure>
-        <img src="assets/img/sala.jpeg" alt="Imagem 3" />
-        <h4>Sala Aconchegante</h4>
+        <img src="assets/img/outros/adegas.png" alt="Imagem 4" />
+        <h4>Outros Trabalhos</h4>
       </figure>
       <!-- Adicione mais figuras aqui -->
     </section>
+
+    <!-- Modal/Lightbox para galeria -->
+    <div id="modal-galeria" class="modal-galeria" style="display: none">
+      <span class="modal-fechar" id="modal-fechar">&times;</span>
+      <div class="modal-conteudo">
+        <button class="modal-seta" id="modal-anterior">&#10094;</button>
+        <img id="modal-img" src="" alt="Imagem em destaque" />
+        <button class="modal-seta" id="modal-proximo">&#10095;</button>
+      </div>
+      <div id="modal-legenda" class="modal-legenda"></div>
+    </div>
 
     <script src="assets/js/script.js"></script>
   </body>

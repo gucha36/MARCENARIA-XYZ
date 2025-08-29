@@ -59,3 +59,135 @@ function atualizarHorarioStatus() {
 }
 atualizarHorarioStatus();
 setInterval(atualizarHorarioStatus, 60000); // Atualiza a cada minuto
+
+// =========================
+// MODAL/LIGHTBOX GALERIA
+// =========================
+
+// Listas de imagens por grupo
+const gruposGaleria = {
+  "Cozinha Personalizada": [
+    {
+      src: "assets/img/cozinhas/cozinha.png",
+      legenda: "Cozinha Personalizada 1",
+    },
+    {
+      src: "assets/img/cozinhas/cozinha2.png",
+      legenda: "Cozinha Personalizada 2",
+    },
+    {
+      src: "assets/img/cozinhas/cozinha3.png",
+      legenda: "Cozinha Personalizada 3",
+    },
+    {
+      src: "assets/img/cozinhas/cozinha4.png",
+      legenda: "Cozinha Personalizada 4",
+    },
+  ],
+  "Banheiro Elegante": [
+    {
+      src: "assets/img/banheiros/banheiro.jpeg",
+      legenda: "Banheiro Elegante 1",
+    },
+    {
+      src: "assets/img/banheiros/banheiro2.jpeg",
+      legenda: "Banheiro Elegante 2",
+    },
+    {
+      src: "assets/img/banheiros/banheiro3.jpeg",
+      legenda: "Banheiro Elegante 3",
+    },
+    {
+      src: "assets/img/banheiros/banheiro4.jpeg",
+      legenda: "Banheiro Elegante 4",
+    },
+  ],
+  "Sala Aconchegante": [
+    { src: "assets/img/salas/sala.jpeg", legenda: "Sala Aconchegante 1" },
+    { src: "assets/img/salas/sala2.jpeg", legenda: "Sala Aconchegante 2" },
+    { src: "assets/img/salas/sala3.jpeg", legenda: "Sala Aconchegante 3" },
+    { src: "assets/img/salas/sala4.jpeg", legenda: "Sala Aconchegante 4" },
+  ],
+  "Outros Trabalhos": [
+    { src: "assets/img/outros/adegas.png", legenda: "Adegas 1" },
+    { src: "assets/img/outros/adegas2.png", legenda: "Adegas 2" },
+    { src: "assets/img/outros/adegas3.png", legenda: "Adegas 3" },
+    { src: "assets/img/outros/adegas4.png", legenda: "Adegas 4" },
+  ],
+};
+
+let modalIndex = 0;
+let modalGrupo = null;
+let modalTimer = null;
+
+function abrirModalGaleria(grupo, index) {
+  modalGrupo = gruposGaleria[grupo];
+  if (!modalGrupo) return;
+  modalIndex = index || 0;
+  atualizarModal();
+  document.getElementById("modal-galeria").style.display = "flex";
+  iniciarRotacaoModal();
+}
+
+function fecharModalGaleria() {
+  document.getElementById("modal-galeria").style.display = "none";
+  pararRotacaoModal();
+}
+
+function atualizarModal() {
+  if (!modalGrupo) return;
+  const img = document.getElementById("modal-img");
+  const legenda = document.getElementById("modal-legenda");
+  img.src = modalGrupo[modalIndex].src;
+  legenda.textContent = modalGrupo[modalIndex].legenda;
+}
+
+function avancarModal() {
+  if (!modalGrupo) return;
+  modalIndex = (modalIndex + 1) % modalGrupo.length;
+  atualizarModal();
+}
+
+function voltarModal() {
+  if (!modalGrupo) return;
+  modalIndex = (modalIndex - 1 + modalGrupo.length) % modalGrupo.length;
+  atualizarModal();
+}
+
+function iniciarRotacaoModal() {
+  pararRotacaoModal();
+  modalTimer = setInterval(avancarModal, 3500);
+}
+function pararRotacaoModal() {
+  if (modalTimer) clearInterval(modalTimer);
+  modalTimer = null;
+}
+
+// Eventos do modal
+document.addEventListener("DOMContentLoaded", function () {
+  // Clique nas imagens da galeria
+  document.querySelectorAll(".galeria figure").forEach(function (fig) {
+    fig.addEventListener("click", function () {
+      const titulo = fig.querySelector("h4").textContent.trim();
+      abrirModalGaleria(titulo, 0);
+    });
+  });
+  // Fechar modal
+  document.getElementById("modal-fechar").onclick = fecharModalGaleria;
+  // Setas
+  document.getElementById("modal-proximo").onclick = function () {
+    avancarModal();
+    iniciarRotacaoModal();
+  };
+  document.getElementById("modal-anterior").onclick = function () {
+    voltarModal();
+    iniciarRotacaoModal();
+  };
+  // Parar rotação ao passar mouse
+  document
+    .getElementById("modal-galeria")
+    .addEventListener("mouseenter", pararRotacaoModal);
+  document
+    .getElementById("modal-galeria")
+    .addEventListener("mouseleave", iniciarRotacaoModal);
+});
