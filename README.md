@@ -68,30 +68,36 @@ Badges de exemplo:
 ## 📁 Estrutura de pastas
 
 ```bash
-marcenaria-site/
+new/
 ├─ index.html
-├─ /assets
-│  ├─ /img
-│  │  ├─ logo.svg
-│  │  ├─ banner.jpg
-│  │  └─ portfolio/
-│  │     ├─ cozinhas/
-│  │     ├─ banheiros/
-│  │     ├─ quartos/
-│  │     └─ salas/
-│  ├─ /css
+├─ LICENSE
+├─ README.md
+├─ assets/
+│  ├─ css/
 │  │  ├─ reset.css
 │  │  └─ styles.css
-│  └─ /js
-│     ├─ main.js
-│     └─ gallery.js
-├─ /docs            # arquivos para Pages (opcional)
-├─ /.github
-│  ├─ ISSUE_TEMPLATE.md
-│  ├─ PULL_REQUEST_TEMPLATE.md
-│  └─ preview-cover.png
-├─ README.md
-└─ LICENSE
+│  ├─ img/
+│  │  ├─ banheiro.jpeg
+│  │  ├─ cozinha.jpeg
+│  │  ├─ cozinha.png
+│  │  ├─ logo.png
+│  │  ├─ sala.jpeg
+│  │  ├─ adegas.png
+│  │  ├─ banheiros/
+│  │  │  └─ banheiro.jpeg
+│  │  ├─ cozinhas/
+│  │  │  └─ cozinha.png
+│  │  ├─ outros/
+│  │  ├─ portfolio/
+│  │  │  ├─ banheiros/
+│  │  │  ├─ cozinhas/
+│  │  │  ├─ quartos/
+│  │  │  └─ salas/
+│  │  └─ salas/
+│  │     └─ sala.jpeg
+│  └─ js/
+│     └─ script.js
+
 ```
 
 ---
