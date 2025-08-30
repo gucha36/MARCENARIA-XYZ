@@ -48,7 +48,7 @@ Badges de exemplo:
 ---
 
 * ## 🎥 Demo
-- **Live (GitHub Pages):** [Acesse aqui 🚀](https://gucha36.github.io/NARO-TESTE/)  
+- **Live (GitHub Pages):** [Acesse aqui 🚀](https://gucha36.github.io/MARCENARIA-XYZ/)  
 - **Vídeo/GIF de navegação:** `./.github/preview.gif`
 
 
