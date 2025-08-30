@@ -2,17 +2,17 @@
    MODAL GALERIA
 ========================= */
 .modal-galeria {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: fixed;
-  z-index: 2000;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.85);
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
   transition: opacity 0.3s;
 }
 .modal-galeria .modal-conteudo {
@@ -29,7 +29,7 @@
   background: #fff;
 }
 .modal-galeria .modal-seta {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
   font-size: 2.5rem;
@@ -62,13 +62,14 @@
   text-align: center;
   max-width: 80vw;
 }
+
 /* =========================
    ESTILOS GERAIS
 ========================= */
 * {
+  box-sizing: border-box;
   cursor: default;
   user-select: none;
-  box-sizing: border-box; /* Garante que todos os elementos usem box-sizing: border-box */
 }
 img,
 video {
@@ -79,19 +80,17 @@ video {
 html,
 body {
   height: 100%;
-  min-width: 0;
   min-height: 100vh;
+  min-width: 0;
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #000000, #ffffff);
   font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Remove overflow horizontal do body */
+  overflow-x: hidden;
 }
 body {
-  min-height: 100vh;
   padding-top: 94px; /* 38px (topbar) + 56px (menu) */
-  cursor: default;
-  
+}
 
 /* =========================
    TOPBAR FIXA
@@ -110,10 +109,10 @@ body {
   background: #111;
   z-index: 1100;
   border-bottom: 1px solid #222;
-  box-sizing: border-box;
   font-size: 1rem;
   gap: 32px;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 .topbar .status {
   font-weight: bold;
@@ -135,12 +134,12 @@ body {
   display: flex;
   align-items: center;
   opacity: 1;
+  padding: 0;
+  pointer-events: none;
   transition: left 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     padding 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
-  pointer-events: none;
 }
 .header.animar {
   left: 0;
@@ -152,9 +151,9 @@ body {
 #logo {
   width: 400px;
   height: auto;
+  transform: scale(1) rotate(0deg);
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1) rotate(0deg);
 }
 .header.animar #logo {
   width: 50px;
@@ -201,8 +200,8 @@ body {
   font-size: 2rem;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
   font-family: "Roboto", Arial, sans-serif;
+  transition: background 0.2s, color 0.2s;
 }
 .menu a:hover,
 .menu a:focus {
@@ -217,7 +216,7 @@ body {
   width: 98%;
   max-width: 1400px;
   aspect-ratio: 16 / 6;
-  margin: 100px auto 0 auto;
+  margin: 100px auto 0;
   background: url("../img/cozinhas/cozinha.png") center center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -276,8 +275,8 @@ body {
    SOBRE
 ========================= */
 .sobre {
-  max-width: 1350px;
-  margin: 60px auto 0 auto;
+  max-width: 1400px;
+  margin: 60px auto 0;
   padding: 40px 32px;
   background: rgba(255, 255, 255, 0.92);
   border-radius: 12px;
@@ -331,7 +330,6 @@ body {
 .galeria.mostrar {
   opacity: 1;
   pointer-events: auto;
-  margin-top: 80px;
 }
 .galeria figure {
   display: flex;
@@ -340,8 +338,8 @@ body {
   margin: 0;
 }
 .galeria img {
-  width: 180px;
-  height: 120px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -351,14 +349,14 @@ body {
   transform: scale(1.08);
 }
 .galeria h4 {
-  margin: 8px 0 0 0;
+  margin: 8px 0 0;
   font-size: 1.1rem;
   font-weight: bold;
   color: #222;
   text-align: center;
 }
 .galeria h6 {
-  margin: 4px 0 0 0;
+  margin: 4px 0 0;
   font-size: 0.9rem;
   font-weight: normal;
   color: #555;
@@ -372,13 +370,95 @@ body {
 }
 
 /* =========================
+   CONTATO
+========================= */
+.contato {
+  max-width: 1400px;
+  margin: 48px auto 0;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px #0002;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.contato h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #222;
+}
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contato-form label {
+  font-weight: bold;
+  color: #333;
+}
+.contato-form input,
+.contato-form textarea {
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+}
+.contato-form button {
+  background: #b89b7b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.contato-form button:hover {
+  background: #a18462;
+}
+.contato-info {
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+}
+.contato-info a {
+  color: #151515;
+  text-decoration: none;
+}
+.contato-info a:hover {
+  text-decoration: underline;
+}
+.contato-redes {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 8px;
+}
+.icone-rede {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+.icone-rede:hover {
+  transform: scale(1.15);
+}
+.contato-mapa {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* =========================
    RESPONSIVIDADE
 ========================= */
 @media (max-width: 900px) {
   .banner-home {
     aspect-ratio: 16 / 10;
     max-width: 98vw;
-    margin: 60px auto 0 auto;
+    margin: 60px auto 0;
   }
   .banner-content {
     padding: 24px 12px;
@@ -393,20 +473,22 @@ body {
     flex-wrap: wrap;
     gap: 16px;
   }
-  .galeria img {
-    width: 120px;
-    height: 80px;
-  }
   .menu a {
     font-size: 1.2rem;
     padding: 6px 8px;
   }
 }
 
+@media (max-width: 700px) {
+  .contato {
+    padding: 16px 4vw;
+  }
+}
+
 @media (max-width: 600px) {
   .banner-home {
-    aspect-ratio: 1/1;
-    margin: 32px auto 0 auto;
+    aspect-ratio: 1 / 1;
+    margin: 32px auto 0;
   }
   .banner-content h1 {
     font-size: 1.3rem;
@@ -425,8 +507,8 @@ body {
   }
   .galeria img {
     width: 90vw;
-    height: auto;
     max-width: 300px;
+    height: auto;
   }
   .topbar,
   .menu {
@@ -434,89 +516,5 @@ body {
     gap: 8px;
     padding: 8px 4px;
     font-size: 0.95rem;
-  }
-}
-.contato {
-  max-width: 600px;
-  margin: 48px auto 0 auto;
-  padding: 32px 24px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px #0002;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.contato h2 {
-  text-align: center;
-  margin-bottom: 16px;
-  color: #222;
-}
-
-.contato-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.contato-form label {
-  font-weight: bold;
-  color: #333;
-}
-
-.contato-form input,
-.contato-form textarea {
-  padding: 10px;
-  border: 1px solid #bbb;
-  border-radius: 6px;
-  font-size: 1rem;
-  resize: vertical;
-}
-
-.contato-form button {
-  background: #b89b7b;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.contato-form button:hover {
-  background: #a18462;
-}
-
-.contato-info {
-  font-size: 1rem;
-  color: #444;
-  text-align: center;
-}
-
-.contato-info a {
-  color: #151515;
-  text-decoration: none;
-}
-
-.contato-info a:hover {
-  text-decoration: underline;
-}
-
-.contato-redes {
-  margin-top: 8px;
-}
-
-.contato-mapa {
-  margin-top: 16px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Responsivo */
-@media (max-width: 700px) {
-  .contato {
-    padding: 16px 4vw;
   }
 }
