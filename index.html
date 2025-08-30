@@ -30,7 +30,6 @@
         <li><a href="#inicio">Home</a></li>
         <li><a href="#sobre">About us</a></li>
         <li><a href="#produtos">Products</a></li>
-        <li><a href="#depoimentos">Reviews</a></li>
         <li><a href="#contato">Contact</a></li>
       </ul>
     </nav>
@@ -107,6 +106,48 @@
       </div>
       <div id="modal-legenda" class="modal-legenda"></div>
     </div>
+
+    <!-- ...conteúdo do formulário e informações... -->
+
+    <section id="contato" class="contato oculto">
+      <h2>Fale Conosco</h2>
+      <form class="contato-form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" />
+
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div class="contato-info">
+        <p>
+          <strong>WhatsApp:</strong>
+          <a href="https://wa.me/5511999999999" target="_blank"
+            >(11) 99999-9999</a
+          >
+        </p>
+        <p>
+          <strong>E-mail:</strong>
+          <a href="mailto:contato@marcenaria.com">contato@marcenaria.com</a>
+        </p>
+        <p><strong>Endereço:</strong> Rua Exemplo, 123 - São Paulo, SP</p>
+        <div class="contato-redes">
+          <a href="https://www.instagram.com/naromillworkcorp/" target="_blank"
+            >Instagram</a
+          >
+          |
+          <a href="https://facebook.com/suaempresa" target="_blank">Facebook</a>
+        </div>
+      </div>
+    </section>
 
     <script src="assets/js/script.js"></script>
   </body>
