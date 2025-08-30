@@ -10,13 +10,16 @@ window.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     const header = document.querySelector(".header");
     header.classList.add("animar");
+
     setTimeout(function () {
-      document.querySelector(".menu").classList.add("mostrar");
+  document.querySelector(".topbar").style.display = "flex";
+  document.querySelector(".menu").classList.add("mostrar");
       document.querySelector(".galeria").classList.add("mostrar");
       document.querySelector(".banner-home").classList.remove("oculto");
       document.querySelector(".banner-home").classList.add("mostrar");
       document.querySelector(".sobre").classList.remove("oculto");
       document.querySelector(".sobre").classList.add("mostrar");
+
       // Se tiver slideshow-container:
       const slideshow = document.querySelector(".slideshow-container");
       if (slideshow) {
